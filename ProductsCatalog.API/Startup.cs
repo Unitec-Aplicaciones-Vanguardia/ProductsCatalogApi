@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,7 +32,7 @@ namespace ProductsCatalog.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<ProductsCatalogContext>();
+            services.AddDbContext<ProductsCatalogContext>((s, p) => p.UseSqlite("Data Source=Data.db"));
             services.AddScoped<IRepository<Product>, ProductRepository>();
             services.AddScoped<IRepository<Category>, CategoryRepository>();
             services.AddScoped<IProductService, ProductService>();

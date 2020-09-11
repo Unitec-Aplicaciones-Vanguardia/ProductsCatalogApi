@@ -6,11 +6,18 @@ namespace ProductsCatalog.Data
 {
     public class ProductsCatalogContext : DbContext
     {
+        public ProductsCatalogContext()
+        {
+            
+        }
+
+        public ProductsCatalogContext(DbContextOptions options)
+            :base(options)
+        {
+            
+        }
         public DbSet<Product> Product { get; set; }
 
         public DbSet<Category> Category { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlite("Data Source=Data.db");
     }
 }

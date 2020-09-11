@@ -20,6 +20,11 @@ namespace ProductsCatalog.Services
 
         public ServiceResult<CategoryDataTransferObject> Add(CategoryDataTransferObject category)
         {
+            if (string.IsNullOrEmpty(category.Description))
+            {
+                throw new ArgumentNullException(nameof(category.Description));
+            }
+
             var categoryEntity = new Category
             {
                 Description = category.Description

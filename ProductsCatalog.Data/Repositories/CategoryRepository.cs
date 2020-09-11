@@ -23,7 +23,7 @@ namespace ProductsCatalog.Data.Repositories
 
         public IQueryable<Category> All()
         {
-            return _context.Category;
+            return _context.Set<Category>();
         }
 
         public Category GetById(long id)
